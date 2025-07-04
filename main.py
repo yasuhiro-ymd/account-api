@@ -126,5 +126,5 @@ def delete_user(authorization: str = Header(None), db: Session = Depends(get_db)
     db.delete(user)
     db.commit()
     return {
-        "message": "Account and user successfully deleted"
+        "message": "Account and user successfully removed"
     }
