@@ -45,7 +45,7 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
     if existing:
         raise HTTPException(status_code=400, detail={
             "message": "Account creation failed",
-            "cause": "Already same user_id exists"
+            "cause": "Already same user_id is used"
         })
     new_user = User(
         user_id=user.user_id,
@@ -55,7 +55,7 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
     db.add(new_user)
     db.commit()
     return {
-        "message": "Account successfully created",
+        "message": "User details by user_id",
         "user": {
             "user_id": new_user.user_id,
             "nickname": new_user.nickname
